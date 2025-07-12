@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>List of Wishes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 2rem;
-      background: #F6FAFD;
+      padding: 0;
+      background: white;
     }
 
     .container {
-      max-width: 480px;
+      max-width: 500px;
       margin: auto;
       background: #fff;
-      border-radius: 12px;
-      /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+      border-radius: 0;
       overflow: hidden;
     }
 
@@ -65,7 +65,7 @@
       border: 1px solid #2b59ff;
       background: #f7fbff;
       border-radius: 2rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       overflow: hidden;
       cursor: pointer;
       transition: background 0.2s ease;
@@ -75,13 +75,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.8rem 1.2rem;
+      padding: 0.6rem 1rem;
     }
 
     .dropdown-left {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
       font-weight: 500;
     }
 
@@ -89,29 +89,31 @@
       font-size: 1.2rem;
     }
 
-    .dropdown-content {
-      display: none;
-      padding: 0 1.2rem 1rem 2.6rem;
-      font-size: 0.9rem;
-      color: #444;
-    }
-
-    .dropdown.open .dropdown-content {
-      display: block;
-    }
-
-    .caret {
+    .caret svg {
+      width: 16px;
+      height: 16px;
       transition: transform 0.3s ease;
     }
 
-    .dropdown.open .caret {
+    .dropdown.open .caret svg {
       transform: rotate(180deg);
     }
 
-    @media (min-width: 768px) {
-      .header {
-        font-size: 1.75rem;
-      }
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      background: #eef5ff;
+      padding: 0 1rem;
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.4;
+      border-top: 1px solid #c8dbf8;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .dropdown.open .dropdown-content {
+      max-height: 200px;
+      padding: 0.75rem 1rem 1rem 2.6rem;
     }
   </style>
 </head>
@@ -125,150 +127,16 @@
       <div class="tab-indicator" id="tab-indicator"></div>
     </div>
 
-    <!-- PATIENT TAB -->
+    <!-- Patient Wishes -->
     <div class="list" id="tab-0">
       <div class="dropdown">
         <div class="dropdown-header" onclick="toggleDropdown(this)">
           <div class="dropdown-left"><span class="icon">🕒</span>Live as long as possible</div>
-          <span class="caret">▼</span>
+          <span class="caret">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </span>
         </div>
-        <div class="dropdown-content">Focus on prolonging life, even with treatment side effects.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">🖐️</span>Avoid pain and suffering</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Prioritize comfort, even if life is shorter.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">😔</span>Avoid being a burden</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Worried about the toll caregiving may take on family.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">🏠</span>Place of care</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Want to be cared for at home, in hospital, or hospice.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">👨‍👩‍👧‍👦</span>Be with loved ones</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Being around family is more important than being in the ICU.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">💰</span>Manage financial costs</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Minimize treatment or care expenses on family.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">🙏</span>Follow spiritual beliefs</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Respect for religious practices, rituals, and values.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">💬</span>Others</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Other unique preferences not listed above.</div>
-      </div>
-    </div>
-
-    <!-- CAREGIVER TAB -->
-    <div class="list" id="tab-1" style="display: none;">
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">🖐️</span>Minimise patient suffering</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Focus on comfort, pain relief, and reducing distress.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">❤️</span>Honour the patient's wishes</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Support what the patient would have wanted.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">😟</span>Avoid upsetting the patient</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Try not to overwhelm or emotionally distress the patient.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">⭐</span>Not give up hope</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Keep the patient’s spirits up and seek options when possible.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">💰</span>Manage financial costs</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Balance spending with what’s sustainable for the family.</div>
-      </div>
-
-      <div class="dropdown">
-        <div class="dropdown-header" onclick="toggleDropdown(this)">
-          <div class="dropdown-left"><span class="icon">💬</span>Other</div>
-          <span class="caret">▼</span>
-        </div>
-        <div class="dropdown-content">Other caregiver priorities or challenges.</div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function switchTab(index) {
-      const tabs = document.querySelectorAll(".tab");
-      const lists = document.querySelectorAll(".list");
-      const indicator = document.getElementById("tab-indicator");
-
-      tabs.forEach((tab, i) => {
-        tab.classList.toggle("active", i === index);
-        lists[i].style.display = i === index ? "block" : "none";
-      });
-
-      indicator.style.transform = `translateX(${index * 100}%)`;
-    }
-
-    function toggleDropdown(header) {
-      const parent = header.closest(".dropdown");
-      const currentTab = parent.closest(".list");
-      const allDropdowns = currentTab.querySelectorAll(".dropdown");
-
-      allDropdowns.forEach(drop => {
-        if (drop !== parent) drop.classList.remove("open");
-      });
-
-      parent.classList.toggle("open");
-    }
-  </script>
-</body>
-</html>
+        <di
